@@ -14,7 +14,7 @@ app.use(express.json());
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // Serve frontend static files
-app.use(express.static(path.join(__dirname, "../public"))); // <-- ADD THIS
+app.use(express.static(path.join(__dirname, "../public"))); // Serve public folder
 
 // Multer storage configuration
 const storage = multer.diskStorage({
@@ -23,9 +23,9 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage });
 
-// Home route (fixes "Cannot GET /")
+// Home route (serves index.html)
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../public/index.html")); // <-- ADD THIS
+  res.sendFile(path.join(__dirname, "../public/index.html"));
 });
 
 // Upload notes
