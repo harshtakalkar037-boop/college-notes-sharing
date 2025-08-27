@@ -1,18 +1,17 @@
 const express = require("express");
 const multer = require("multer");
 const cors = require("cors");
-const db = require("./db");
 const path = require("path");
+const db = require("./db"); // your SQLite database file
 
 const app = express();
+
+// Middleware
 app.use(cors());
+app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
-});
-
-
+// Multer storage configuration
 const storage = multer.diskStorage({
   destination: "uploads/",
   filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
@@ -20,9 +19,16 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+// Home route (fixes "Cannot GET /")
+app.get("/", (req, res) => {
+  res.send("Backend is running!");
+});
+
 // Upload notes
 app.post("/upload", upload.single("note"), (req, res) => {
   const { title } = req.body;
+  if (!req.file) return res.status(400).json({ error: "No file uploaded" });
+
   const filename = req.file.filename;
   db.run("INSERT INTO notes (title, filename) VALUES (?, ?)", [title, filename], function (err) {
     if (err) return res.status(500).json({ error: err.message });
@@ -30,7 +36,7 @@ app.post("/upload", upload.single("note"), (req, res) => {
   });
 });
 
-// Get notes
+// Get all notes
 app.get("/notes", (req, res) => {
   db.all("SELECT * FROM notes", (err, rows) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -38,7 +44,12 @@ app.get("/notes", (req, res) => {
   });
 });
 
-
-app.listen(5000, "0.0.0.0", () => {
-  console.log("Server running at http://0.0.0.0:5000");
+// Start server on Render with dynamic port
+const PORT = process.env.PORT || 5000;
+const server = app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running at http://0.0.0.0:${PORT}`);
 });
+
+// Optional: increase timeouts to avoid Render crashes
+server.keepAliveTimeout = 120000; // 120 seconds
+server.headersTimeout = 120000;   // 120 seconds
