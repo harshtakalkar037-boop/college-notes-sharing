@@ -9,21 +9,23 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static("public"));
 
-app.use("/uploads", express.static("uploads"));
+// Serve uploaded files
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Serve frontend static files
+app.use(express.static(path.join(__dirname, "../public"))); // <-- ADD THIS
 
 // Multer storage configuration
 const storage = multer.diskStorage({
   destination: "uploads/",
   filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
 });
-
 const upload = multer({ storage });
 
 // Home route (fixes "Cannot GET /")
 app.get("/", (req, res) => {
-  res.send("Backend is running!");
+  res.sendFile(path.join(__dirname, "../public/index.html")); // <-- ADD THIS
 });
 
 // Upload notes
