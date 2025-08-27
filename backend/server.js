@@ -8,6 +8,11 @@ const app = express();
 app.use(cors());
 app.use("/uploads", express.static("uploads"));
 
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
+
 const storage = multer.diskStorage({
   destination: "uploads/",
   filename: (req, file, cb) => cb(null, Date.now() + path.extname(file.originalname))
@@ -32,9 +37,7 @@ app.get("/notes", (req, res) => {
     res.json(rows);
   });
 });
-app.get('/', (req, res) => {
-  res.send('Backend is running!');
-});
+
 
 app.listen(5000, "0.0.0.0", () => {
   console.log("Server running at http://0.0.0.0:5000");
