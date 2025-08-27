@@ -10,11 +10,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Serve uploaded files
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+app.use(express.static(path.join(__dirname, "../public")));
 
-// Serve frontend static files
-app.use(express.static(path.join(__dirname, "../public"))); // Serve public folder
+// Home route
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../public/index.html"));
+});
 
 // Multer storage configuration
 const storage = multer.diskStorage({
