@@ -1,4 +1,8 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
+# College Notes Sharing
+A repository for sharing and collaborating on college notes.
+
 # 📚 College Notes Sharing Platform
 
 ## 🚀 How to Run
@@ -14,12 +18,17 @@
 
 3. Upload notes → See them listed → Download anytime.
 =======
+=======
+# College Notes Sharing Project
+
+This repository contains the frontend and backend for the college notes sharing platform.
+>>>>>>> e9081c77b6b08eb021bb3be4f44942ccb21f44d3
 # 📚 College Notes Sharing Website
 
 A web platform where college students and professors can **upload, share, and access notes online**.  
 The project is built with a **React frontend** and **Node.js + Express backend**, with **SQLite database** for storing data.
 
----
+
 
 ## 🚀 Features
 - 👨‍🎓 Students can upload and download notes.
@@ -28,7 +37,7 @@ The project is built with a **React frontend** and **Node.js + Express backend**
 - 📂 Organized storage by subject/course.
 - 🖥️ Simple and responsive UI.
 
----
+
 
 ## 🛠️ Tech Stack
 - **Frontend**: React, Tailwind CSS  
@@ -36,7 +45,7 @@ The project is built with a **React frontend** and **Node.js + Express backend**
 - **Database**: SQLite  
 - **File Uploads**: Multer  
 
----
+
 
 ## ⚙️ Installation & Setup
 
@@ -82,5 +91,9 @@ Harsh Takalkar
 GitHub Profile
 
 
+<<<<<<< HEAD
 ---
 >>>>>>> c95ae3d09039274ca2e41ad6f41b368d6d1ee32f
+=======
+
+>>>>>>> e9081c77b6b08eb021bb3be4f44942ccb21f44d3
