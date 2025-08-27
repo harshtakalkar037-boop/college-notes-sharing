@@ -1,3 +1,6 @@
+# College Notes Sharing Project
+
+This repository contains the frontend and backend for the college notes sharing platform.
 # 📚 College Notes Sharing Website
 
 A web platform where college students and professors can **upload, share, and access notes online**.  
