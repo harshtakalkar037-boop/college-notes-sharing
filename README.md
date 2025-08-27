@@ -6,7 +6,7 @@ This repository contains the frontend and backend for the college notes sharing 
 A web platform where college students and professors can **upload, share, and access notes online**.  
 The project is built with a **React frontend** and **Node.js + Express backend**, with **SQLite database** for storing data.
 
----
+
 
 ## 🚀 Features
 - 👨‍🎓 Students can upload and download notes.
@@ -15,7 +15,7 @@ The project is built with a **React frontend** and **Node.js + Express backend**
 - 📂 Organized storage by subject/course.
 - 🖥️ Simple and responsive UI.
 
----
+
 
 ## 🛠️ Tech Stack
 - **Frontend**: React, Tailwind CSS  
@@ -23,7 +23,7 @@ The project is built with a **React frontend** and **Node.js + Express backend**
 - **Database**: SQLite  
 - **File Uploads**: Multer  
 
----
+
 
 ## ⚙️ Installation & Setup
 
@@ -69,4 +69,4 @@ Harsh Takalkar
 GitHub Profile
 
 
----
+
