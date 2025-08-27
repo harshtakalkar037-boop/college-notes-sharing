@@ -5,7 +5,7 @@ form.addEventListener("submit", async (e) => {
   e.preventDefault();
   const formData = new FormData(form);
 
-  await fetch("http://localhost:5000/upload", {
+  await fetch("https://college-notes-sharing.onrender.com/upload", {
     method: "POST",
     body: formData
   });
@@ -15,12 +15,12 @@ form.addEventListener("submit", async (e) => {
 });
 
 async function loadNotes() {
-  const res = await fetch("http://localhost:5000/notes");
+  const res = await fetch("https://college-notes-sharing.onrender.com/notes");
   const notes = await res.json();
   notesList.innerHTML = "";
   notes.forEach(note => {
     const li = document.createElement("li");
-    li.innerHTML = `<a href="http://localhost:5000/uploads/${note.filename}" target="_blank">${note.title}</a>`;
+    li.innerHTML = `<a href="https://college-notes-sharing.onrender.com/uploads/${note.filename}" target="_blank">${note.title}</a>`;
     notesList.appendChild(li);
   });
 }
